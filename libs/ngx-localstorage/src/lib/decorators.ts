@@ -31,7 +31,7 @@ export function ngxLocalStorage(options?: DecoratorOpts) {
       .subscribe((ev: StorageEvent) => {
         if (!!ev.newValue && typeof ev.newValue === 'string') {
           if (ev.newValue !== 'null') {
-            target[propertyDescription] = ev.newValue;
+            target[propertyDescription] = service.get(key, prefix);
           } else {
             target[propertyDescription] = !!options.nullTransformer ? options.nullTransformer() : null;
           }
